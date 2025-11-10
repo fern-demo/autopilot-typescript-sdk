@@ -35,6 +35,7 @@ describe("Imdb", () => {
             title: "The Shawshank Redemption",
             rating: 9.3,
             description: "A story of hope and redemption.",
+            metadata: "hey",
         };
         server.mockEndpoint().get("/movies/tt0111161").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
@@ -44,6 +45,7 @@ describe("Imdb", () => {
             title: "The Shawshank Redemption",
             rating: 9.3,
             description: "A story of hope and redemption.",
+            metadata: "hey",
         });
     });
 
