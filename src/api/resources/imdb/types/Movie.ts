@@ -7,6 +7,5 @@ export interface Movie {
     title: string;
     /** The rating scale out of ten stars */
     rating: number;
-    description: string;
     metadata: string;
 }
