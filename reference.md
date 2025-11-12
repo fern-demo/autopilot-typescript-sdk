@@ -29,7 +29,9 @@ Add a movie to the database
 ```typescript
 await client.imdb.createMovie({
     title: "title",
-    rating: 1.1
+    rating: 1.1,
+    metadata: "metadata",
+    more_metadata: "more_metadata"
 });
 
 ```
