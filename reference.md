@@ -1,5 +1,7 @@
 # Reference
+
 ## Imdb
+
 <details><summary><code>client.imdb.<a href="/src/api/resources/imdb/client/Client.ts">createMovie</a>({ ...params }) -> FernAutopilotTestApi.MovieId</code></summary>
 <dl>
 <dd>
@@ -13,6 +15,7 @@
 <dd>
 
 Add a movie to the database
+
 </dd>
 </dl>
 </dd>
@@ -29,10 +32,12 @@ Add a movie to the database
 ```typescript
 await client.imdb.createMovie({
     title: "title",
-    rating: 1.1
+    rating: 1.1,
+    metadata: "metadata",
+    more_metadata: "more_metadata",
 });
-
 ```
+
 </dd>
 </dl>
 </dd>
@@ -46,21 +51,20 @@ await client.imdb.createMovie({
 <dl>
 <dd>
 
-**request:** `FernAutopilotTestApi.CreateMovieRequest` 
-    
+**request:** `FernAutopilotTestApi.CreateMovieRequest`
+
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Imdb.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
+**requestOptions:** `Imdb.RequestOptions`
 
+</dd>
+</dl>
+</dd>
+</dl>
 
 </dd>
 </dl>
@@ -79,6 +83,7 @@ await client.imdb.createMovie({
 <dd>
 
 Retrieve a movie from the database based on the ID
+
 </dd>
 </dl>
 </dd>
@@ -94,8 +99,8 @@ Retrieve a movie from the database based on the ID
 
 ```typescript
 await client.imdb.getMovie("tt0111161");
-
 ```
+
 </dd>
 </dl>
 </dd>
@@ -109,21 +114,20 @@ await client.imdb.getMovie("tt0111161");
 <dl>
 <dd>
 
-**id:** `FernAutopilotTestApi.MovieId` 
-    
+**id:** `FernAutopilotTestApi.MovieId`
+
 </dd>
 </dl>
 
 <dl>
 <dd>
 
-**requestOptions:** `Imdb.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
+**requestOptions:** `Imdb.RequestOptions`
 
+</dd>
+</dl>
+</dd>
+</dl>
 
 </dd>
 </dl>
