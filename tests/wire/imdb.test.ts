@@ -8,7 +8,7 @@ describe("Imdb", () => {
     test("createMovie", async () => {
         const server = mockServerPool.createServer();
         const client = new FernAutopilotTestApiClient({ environment: server.baseUrl });
-        const rawRequestBody = { title: "title", rating: 1.1 };
+        const rawRequestBody = { title: "title", rating: 1.1, metadata: "metadata", more_metadata: "more_metadata" };
         const rawResponseBody = "string";
         server
             .mockEndpoint()
@@ -22,6 +22,8 @@ describe("Imdb", () => {
         const response = await client.imdb.createMovie({
             title: "title",
             rating: 1.1,
+            metadata: "metadata",
+            more_metadata: "more_metadata",
         });
         expect(response).toEqual("string");
     });
@@ -34,8 +36,8 @@ describe("Imdb", () => {
             id: "tt0111161",
             title: "The Shawshank Redemption",
             rating: 9.3,
-            description: "A story of hope and redemption.",
             metadata: "hey",
+            rank: 1,
         };
         server.mockEndpoint().get("/movies/tt0111161").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
@@ -44,8 +46,8 @@ describe("Imdb", () => {
             id: "tt0111161",
             title: "The Shawshank Redemption",
             rating: 9.3,
-            description: "A story of hope and redemption.",
             metadata: "hey",
+            rank: 1,
         });
     });
 
