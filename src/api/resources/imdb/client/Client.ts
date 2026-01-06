@@ -28,7 +28,9 @@ export class Imdb {
      * @example
      *     await client.imdb.createMovie({
      *         title: "title",
-     *         rating: 1.1
+     *         rating: 1.1,
+     *         more_metadata: 1,
+     *         rank: 1
      *     })
      */
     public createMovie(
