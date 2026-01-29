@@ -4,7 +4,6 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
 import * as errors from "../../../../errors/index.js";
-import * as serializers from "../../../../serialization/index.js";
 import * as FernAutopilotTestApi from "../../../index.js";
 
 export declare namespace Imdb {
@@ -30,7 +29,7 @@ export class Imdb {
      *     await client.imdb.createMovie({
      *         title: "title",
      *         rating: 1.1,
-     *         moreMetadata: 1,
+     *         more_metadata: 1,
      *         rank: 1
      *     })
      */
@@ -57,10 +56,7 @@ export class Imdb {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: serializers.CreateMovieRequest.jsonOrThrow(request, {
-                unrecognizedObjectKeys: "strip",
-                omitUndefined: true,
-            }),
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -68,16 +64,7 @@ export class Imdb {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return {
-                data: serializers.MovieId.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
+            return { data: _response.body as FernAutopilotTestApi.MovieId, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -137,7 +124,7 @@ export class Imdb {
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)),
-                `/movies/${core.url.encodePathParam(serializers.MovieId.jsonOrThrow(id, { omitUndefined: true }))}`,
+                `/movies/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -149,29 +136,14 @@ export class Imdb {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return {
-                data: serializers.Movie.parseOrThrow(_response.body, {
-                    unrecognizedObjectKeys: "passthrough",
-                    allowUnrecognizedUnionMembers: true,
-                    allowUnrecognizedEnumValues: true,
-                    skipValidation: true,
-                    breadcrumbsPrefix: ["response"],
-                }),
-                rawResponse: _response.rawResponse,
-            };
+            return { data: _response.body as FernAutopilotTestApi.Movie, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 404:
                     throw new FernAutopilotTestApi.MovieDoesNotExistError(
-                        serializers.MovieId.parseOrThrow(_response.error.body, {
-                            unrecognizedObjectKeys: "passthrough",
-                            allowUnrecognizedUnionMembers: true,
-                            allowUnrecognizedEnumValues: true,
-                            skipValidation: true,
-                            breadcrumbsPrefix: ["response"],
-                        }),
+                        _response.error.body as FernAutopilotTestApi.MovieId,
                         _response.rawResponse,
                     );
                 default:

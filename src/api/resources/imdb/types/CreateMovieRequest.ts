@@ -3,6 +3,6 @@
 export interface CreateMovieRequest {
     title: string;
     rating: number;
-    moreMetadata: number;
+    more_metadata: number;
     rank: number;
 }
