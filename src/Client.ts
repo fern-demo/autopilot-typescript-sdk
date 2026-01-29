@@ -23,8 +23,8 @@ export class FernAutopilotTestApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "",
-                    "X-Fern-SDK-Version": "2.0.1",
-                    "User-Agent": "/2.0.1",
+                    "X-Fern-SDK-Version": "2.0.2",
+                    "User-Agent": "/2.0.2",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
