@@ -26,7 +26,7 @@ const client = new FernAutopilotTestApiClient({ environment: "YOUR_BASE_URL" });
 await client.imdb.createMovie({
     title: "title",
     rating: 1.1,
-    moreMetadata: 1,
+    more_metadata: 1,
     rank: 1
 });
 ```

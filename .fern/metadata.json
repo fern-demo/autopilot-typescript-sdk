@@ -3,6 +3,6 @@
     "generatorName": "fernapi/fern-typescript-sdk",
     "generatorVersion": "3.28.11",
     "generatorConfig": {
-        "noSerdeLayer": false
+        "noSerdeLayer": true
     }
 }
