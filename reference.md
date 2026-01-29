@@ -30,7 +30,7 @@ Add a movie to the database
 await client.imdb.createMovie({
     title: "title",
     rating: 1.1,
-    moreMetadata: 1,
+    more_metadata: 1,
     rank: 1
 });
 
